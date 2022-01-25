@@ -28,6 +28,7 @@ const Home = () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 if (entry.target.classList.contains('home')) {
+                    console.log(entry.target);
                     /*  leftEl.classList.remove('fadeOutLeft');
                      rightEl.classList.remove('fadeOutRight');
                      leftEl.classList.add('fadeInLeft');
