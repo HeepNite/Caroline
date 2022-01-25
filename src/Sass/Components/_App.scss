@@ -1,0 +1,22 @@
+.container {
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+.panel {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+}
+
+.index-section-dark {
+  background: linear-gradient(254deg, #a71358 0%, #0f072a 100%);
+}
+
+.index-section-clare {
+  background-color: $BaseColor-7-hex;
+  background-image: url("../../Assets/Img/bg-alt-02.svg");
+  background-size: cover;
+}

@@ -1,32 +1,56 @@
 /* react hooks */
-import { useEffect, useRef } from 'react';
+import { useEffect, useContext, useRef } from 'react';
 
-/* animations Gsap*/
+/* context */
+import { UseObsCont } from '../Context/UseObsCont';
+
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-import { home, killProcess } from '../Helpers/Animations';
 
 /* icons */
 import { FaAngleDoubleRight, FaCameraRetro, FaLaptop, FaFilm } from "react-icons/fa";
 
 const Home = () => {
-    const el = useRef(null);
-    const child = gsap.utils.selector(el);
-    const tl = gsap.timeline()
+    const ref = useRef(null)
+    const entries = useContext(UseObsCont);
 
     useEffect(() => {
-        home(child, tl);
-        return () => killProcess(tl);
+        /* const leftEl = document.querySelector('.home-presentation-left-container');
+        const rightEl = document.querySelector('.home-image-right-container');
+      */    
+     const el = gsap.utils.selector(ref)
+        gsap.from(el('.home-grid-left-container'), {
+            duration: 1,
+            opacity: 0,
+            x: -100,
+            ease: 'power2.out'
 
+        });
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('home')) {
+                    /*  leftEl.classList.remove('fadeOutLeft');
+                     rightEl.classList.remove('fadeOutRight');
+                     leftEl.classList.add('fadeInLeft');
+                     rightEl.classList.add('fadeInRight'); */
+                  
+                }
+                else {
+                 /*    leftEl.classList.remove('fadeInLeft');
+                    rightEl.classList.remove('fadeInRight');
+                    leftEl.classList.add('fadeOutLeft');
+                    rightEl.classList.add('fadeOutRight'); */
+                }
+            }
 
-    }, []);
+        });
+
+    }, [entries,]);
 
     return (
-        <main ref={el} className="home-container">
+        <main ref={ref} className="home-container">
             <div className="home-flex-container">
-                <div className="home-presentation-container">
-                    <section className="home-grid-left-container">
+                <div className="home-presentation-left-container ">
+                    <section className="home-grid-left-container ">
                         <article className="home-vertical-text-1">
                             <h4>Videographer producer</h4>
                             <div className="general-social-divider"></div>
@@ -77,7 +101,7 @@ const Home = () => {
                     </section>
                 </div>
 
-                <section className="home-grid-right-container">
+                <section className="home-image-right-container ">
                     <article className="img-container">
                     </article>
                 </section>

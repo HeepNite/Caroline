@@ -1,7 +1,6 @@
-import { useEffect, useRef, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 
-import { gsap } from "gsap";
-import { blog, killProcess } from '../Helpers/Animations'
+
 
 import BlogReducer from "../Reducer/BlogReducer";
 
@@ -44,20 +43,17 @@ const initialState = [{
 
 const Blog = () => {
 
-    const el = useRef();
-    const child = gsap.utils.selector(el);
-    const tl = gsap.timeline();
-    
+
+
 
     useEffect(() => {
-        blog(child, tl);
-        return () => killProcess(tl);
+
     }, []);
 
     const [posts, dispatch] = useReducer(BlogReducer, initialState)
 
     return (
-        <main ref={el} className="blog-container">
+        <main className="blog-container">
             <section className="blog-grid-container">
 
                 <article className="blog-titles">

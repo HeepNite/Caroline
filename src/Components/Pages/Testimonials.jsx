@@ -1,7 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
-import { gsap } from 'gsap';
-import { project_testimonial, killProcess } from "../Helpers/Animations"
+
 
 import { useReducer } from 'react'
 import TestimonialReducer from '../Reducer/TestimonialReducer';
@@ -33,19 +32,16 @@ const initialState = [{
 
 const Testimonials = () => {
 
-    const el = useRef();
-    const child = gsap.utils.selector(el);
-    const tl = gsap.timeline();
+
 
     useEffect(() => {
-        project_testimonial(child, tl);
-        return () => killProcess(tl);
+
     }, []);
 
 
     const [testimonials, dispatch] = useReducer(TestimonialReducer, initialState)
     return (
-        <main ref={el} className="testimonials-container">
+        <main className="testimonials-container">
             {
                 testimonials.map(testimonial => (
                     <section className="testimonials-slider" key={testimonial.id}>

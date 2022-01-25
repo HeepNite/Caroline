@@ -1,25 +1,41 @@
-import { useEffect, useRef } from 'react';
+/* react hooks */
+import { useEffect, useContext } from 'react';
 
+/* context */
+import { UseObsCont } from '../Context/UseObsCont';
+
+/* icons */
 import { FaCameraRetro, FaLaptop, FaFilm, FaBomb } from "react-icons/fa";
-
-import { gsap } from 'gsap';
-import { whatWeDo_client, killProcess } from '../Helpers/Animations';
 
 
 const WhatCanIDo = () => {
 
-    const el = useRef();
-    const child = gsap.utils.selector(el);
-    const tl = gsap.timeline();
+    const entries = useContext(UseObsCont);
 
     useEffect(() => {
-        whatWeDo_client(child, tl);
-        return () => killProcess(tl);
-    }, []);
+        const leftEl = document.querySelector('.i-do-left-presentation-container');
+        const rightEl = document.querySelector('.i-do-grid-right-container');
+
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('whatCanDo')) {
+                    leftEl.classList.add('fadeInLeft');
+                    rightEl.classList.add('fadeInLeft');
+                }
+                else {
+                    leftEl.classList.remove('fadeInLeft');
+                    rightEl.classList.remove('fadeInLeft');
+                }
+            }
+
+        });
+
+    }, [entries]);
+
 
     return (
-        <main ref={el} className="i-do-flex-container">
-            <section className="i-do-presentation-container">
+        <main className="i-do-flex-container">
+            <section className="i-do-left-presentation-container">
                 <article className="i-do-presentation">
                     <h2>Services</h2>
                     <h1>What I can do for you</h1>
@@ -35,7 +51,7 @@ const WhatCanIDo = () => {
             </section>
 
             {/* create a slider for experiences and services in a helper */}
-            <section className="i-do-grid-left-container">
+            <section className="i-do-grid-right-container">
 
                 <article className="i-do-grid-item">
                     <div className="i-do-icon">

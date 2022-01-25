@@ -1,24 +1,20 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
-import { gsap } from 'gsap';
-import { whatWeDo_client, killProcess } from '../Helpers/Animations';
+
 
 import { FaCameraRetro, FaLaptop, FaFilm, FaBomb } from "react-icons/fa";
 
 
 const Clients = () => {
 
-    const el = useRef();
-    const child = gsap.utils.selector(el);
-    const tl = gsap.timeline();
+
 
     useEffect(() => {
-        whatWeDo_client(child, tl);
-        return () => killProcess(tl)
+     
     }, []);
 
     return (
-        <main ref={el} className="client-flex-container">
+        <main  className="client-flex-container">
             <section className="client-presentation-container">
                 <article className="client-presentation">
                     <h2>We work together</h2>

@@ -1,53 +1,75 @@
-import Index from "./Components/Pages/Index";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Home from "./Components/Pages/Home";
+/* Core */
+import { useEffect, useRef } from 'react';
 
+/* Hooks */
+import useObserver from "./Components/Hooks/useObserver";
+
+/* Context */
+import { UseObsCont } from './Components/Context/UseObsCont';
+
+/* Routers 
+mport AppRouter from "./Routes/AppRouter";*/
+
+/* Page Components */
+import Home from './Components/Pages/Home';
 import WhatCanIDo from './Components/Pages/WhatCanIDo';
 import Project from './Components/Pages/Project';
 import Testimonials from './Components/Pages/Testimonials';
 import Blog from './Components/Pages/Blog';
 import Contact from './Components/Pages/Contact';
 import Clients from './Components/Pages/Clients';
-gsap.registerPlugin(ScrollTrigger);
 
-
-
-
-/* import AppRouter from "./Routes/AppRouter";*/
 
 const App = () => {
+
+    /* Variables */
+    const options = {
+        root: null,
+        rootMargin: "500px 500px",
+        threshold: 1.0
+    }
+    /* Hooks */
+    const [ , setElements, entries] = useObserver(options);
+
+    /* Referencies */
+    const ref = useRef(null);
+
+    /* Interction observer API */
+    useEffect(() => {
+
+        let panels = ref.current.children;
+        setElements(panels);
+
+    }, [setElements]);
+
     return (
-        <>
-            <div className="section index-section-dark">
-                <Home />
-            </div>
-            <div className="section index-section-clare">
-                <WhatCanIDo />
-            </div>
-
-            <div className="section index-section-dark">
-                <Project />
-            </div>
-
-            <div className="section index-section-clare">
-                <Clients />
-            </div>
-
-            <div className="section index-section-dark">
-                <Testimonials />
-            </div>
-
-            <div className="section index-section-clare">
-                <Blog />
-            </div>
-
-            <div className="section index-section-dark">
-                <Contact />
-            </div>
-        </>
-
+        <UseObsCont.Provider value={entries}>
+            <main ref={ref} className="container">
+                <section className=" panel home index-section-dark">
+                    <Home />
+                </section>
+                <section className=" panel whatCanDo index-section-clare">
+                    <WhatCanIDo />
+                </section>
+                <section className=" panel project index-section-dark">
+                    <Project />
+                </section>
+                <section className=" panel clients index-section-clare">
+                    <Clients />
+                </section>
+                <section className=" panel testimonialsn idex-section-dark">
+                    <Testimonials />
+                </section>
+                <section className=" panel blog  index-section-clare">
+                    <Blog />
+                </section>
+                <section className=" panel contact index-section-dark">
+                    <Contact />
+                </section>
+            </main>
+        </UseObsCont.Provider>
     );
+
 }
 
 export default App;

@@ -1,26 +1,20 @@
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react';
 
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { contact, killProcess } from '../Helpers/Animations';
+
 
 import { FaChrome, FaEnvelopeOpenText } from 'react-icons/fa';
 
 const Contact = () => {
 
-    const el = useRef(null);
-    const child = gsap.utils.selector(el);
-    const tl = gsap.timeline();
-    gsap.registerPlugin(ScrollTrigger);
+
 
     useEffect(() => {
-       contact(child, tl);
-        return () => killProcess(tl);
-       
-    },[]);
+
+
+    }, []);
     return (
 
-        <main ref={el} className="contact-container">
+        <main className="contact-container">
             <section className="contact-grid-container">
 
                 <article className="contact-text">

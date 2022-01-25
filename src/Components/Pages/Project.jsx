@@ -1,24 +1,35 @@
-import { useEffect, useRef } from 'react';
+import { useEffect,useContext } from 'react';
+import { UseObsCont } from '../Context/UseObsCont';
 
-import { gsap } from 'gsap';
-import { project_testimonial, killProcess } from "../Helpers/Animations"
+
 
 import ProjectImg from '../../Assets/Img/profile-2.jpeg';
 
 const Project = () => {
-
-    const el = useRef();
-    const child = gsap.utils.selector(el);
-    const tl = gsap.timeline();
-
+    const entries = useContext(UseObsCont);
     useEffect(() => {
-        project_testimonial(child, tl);
-        return () => killProcess(tl);
-    }, []);
+        const leftEl = document.querySelector('.home-presentation-left-container');
+        const rightEl = document.querySelector('.home-image-right-container');
+
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('whatCanDo')) {
+                    console.log(entry.target)
+                    
+                }
+                else {
+                   
+                }
+            }
+
+        });
+
+    }, [entries]);
+
 
 
     return (
-        <main ref={el} className="project-flex-container">
+        <main  className="project-flex-container">
             <section className='project-content-container'>
                 <div className="project-grid-container">
                     <article className="project-presentation">
