@@ -1,8 +1,16 @@
-import { useEffect } from 'react';
+/* react hooks */
+import { useEffect, useContext, useRef, useReducer } from 'react';
+
+/* context */
+import { UseObsCont } from '../Context/UseObsCont';
+
+/* gsap animations */
+import gsap from 'gsap';
+
+/* helpers */
+import { fadeIn, fadeOut } from '../Helpers/Animatiosn';
 
 
-
-import { useReducer } from 'react'
 import TestimonialReducer from '../Reducer/TestimonialReducer';
 import testimonials from '../../Assets/Img/test-1.jpeg';
 import testimonials2 from '../../Assets/Img/test-2.jpeg';
@@ -31,17 +39,32 @@ const initialState = [{
 }, */]
 
 const Testimonials = () => {
-
+    const el = useRef(null);
+    const child = gsap.utils.selector(el);
+    const entries = useContext(UseObsCont);
 
 
     useEffect(() => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('testimonials')) {
+                    fadeIn(gsap, child); 
 
-    }, []);
+
+                }
+                else {
+                    fadeOut(gsap, child); 
+
+                }
+            }
+        });
+
+    }, [entries]);
 
 
     const [testimonials, dispatch] = useReducer(TestimonialReducer, initialState)
     return (
-        <main className="testimonials-container">
+        <main ref={el} className="testimonials-container">
             {
                 testimonials.map(testimonial => (
                     <section className="testimonials-slider" key={testimonial.id}>
@@ -54,7 +77,9 @@ const Testimonials = () => {
                             </article>
                         </div>
 
-                        <article className="testimonials-slider-img"><img src={testimonial.image} alt="testimonial" /></article>
+                        <article className="testimonials-slider-img-container">
+                            <img className='testimonials-slider-img' src={testimonial.image} alt="testimonial" />
+                            </article>
                     </section>
                 ))
             }

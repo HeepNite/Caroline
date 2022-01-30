@@ -1,40 +1,44 @@
 /* react hooks */
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useRef } from 'react';
 
 /* context */
 import { UseObsCont } from '../Context/UseObsCont';
+
+/* helpers */
+import { fadeIn, fadeOut } from '../Helpers/Animatiosn';
+/* gsap */
+import gsap from 'gsap';
 
 /* icons */
 import { FaCameraRetro, FaLaptop, FaFilm, FaBomb } from "react-icons/fa";
 
 
 const WhatCanIDo = () => {
-
+    const el = useRef(null);
+    const child = gsap.utils.selector(el);
     const entries = useContext(UseObsCont);
 
     useEffect(() => {
-        const leftEl = document.querySelector('.i-do-left-presentation-container');
-        const rightEl = document.querySelector('.i-do-grid-right-container');
+
 
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 if (entry.target.classList.contains('whatCanDo')) {
-                    leftEl.classList.add('fadeInLeft');
-                    rightEl.classList.add('fadeInLeft');
+
+                    fadeIn(gsap, child);
+
                 }
                 else {
-                    leftEl.classList.remove('fadeInLeft');
-                    rightEl.classList.remove('fadeInLeft');
+                    fadeOut(gsap, child);
                 }
             }
-
         });
 
     }, [entries]);
 
 
     return (
-        <main className="i-do-flex-container">
+        <main ref={el} className="i-do-flex-container">
             <section className="i-do-left-presentation-container">
                 <article className="i-do-presentation">
                     <h2>Services</h2>
@@ -50,7 +54,6 @@ const WhatCanIDo = () => {
 
             </section>
 
-            {/* create a slider for experiences and services in a helper */}
             <section className="i-do-grid-right-container">
 
                 <article className="i-do-grid-item">

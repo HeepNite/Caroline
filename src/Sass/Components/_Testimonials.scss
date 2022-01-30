@@ -1,9 +1,9 @@
 .testimonials-slider {
     display: flex;
     align-items: center;
-    .testimonials-content-container{
-        max-width: 60rem;
-        width:100%;
+    .testimonials-content-container {
+        max-width: 65rem;
+        width: 100%;
         height: 100vh;
         display: flex;
         flex-direction: column;
@@ -56,14 +56,12 @@
             padding-right: 6rem;
             color: $BaseColor-1-text-hex;
         }
-       
     }
-    .testimonials-slider-img{
+    .testimonials-slider-img-container {    
         width: 100%;
         height: 100vh;
-       
         overflow: hidden;
-        img {
+        .testimonials-slider-img {
             width: 100%;
             height: 100%;
             object-fit: cover;

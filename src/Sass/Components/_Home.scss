@@ -27,7 +27,8 @@
                 grid-template-columns: 7rem 27rem 10rem;
                 grid-template-rows: 23rem 8rem 7rem 4rem;
                 z-index: 15;
-
+            
+               
                 .home-vertical-text-1 {
                     grid-column-start: 1;
                     grid-row-start: 1;
@@ -204,24 +205,23 @@
                     }
                 }
             }
+           
         }
-        .fadeInLeft{
-           opacity: 1;
-           transform: scale(1) translateX(0);
-        }
-        .fadeOutLeft{
 
-        }
         .home-image-right-container {
             width: 100%;
             height: 100vh;
+            overflow: hidden;
             .img-container {
                 width: 100%;
                 height: 100vh;
                 background-image: url("../../Assets/Img/profile-7.jpeg");
                 background-size: 88rem;
                 background-position: 34% 74%;
+                background-repeat: no-repeat;
+                overflow: hidden;
             }
         }
+      
     }
 }

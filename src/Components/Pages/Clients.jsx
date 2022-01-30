@@ -1,20 +1,43 @@
-import { useEffect } from "react";
+/* react hooks */
+import { useEffect, useContext, useRef } from 'react';
 
+/* context */
+import { UseObsCont } from '../Context/UseObsCont';
 
+/* gsap animations */
+import gsap from 'gsap';
 
+/* helpers */
+import { fadeIn, fadeOut } from '../Helpers/Animatiosn';
+
+/* icons */
 import { FaCameraRetro, FaLaptop, FaFilm, FaBomb } from "react-icons/fa";
 
 
 const Clients = () => {
-
-
+    const el = useRef(null);
+    const child = gsap.utils.selector(el);
+    const entries = useContext(UseObsCont);
 
     useEffect(() => {
-     
-    }, []);
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('clients')) {
+                   fadeIn(gsap, child); 
+
+
+                }
+                else {
+                 fadeOut(gsap, child); 
+
+                }
+            }
+        });
+
+    }, [entries]);
 
     return (
-        <main  className="client-flex-container">
+        <main ref={el} className="client-flex-container">
             <section className="client-presentation-container">
                 <article className="client-presentation">
                     <h2>We work together</h2>
@@ -28,7 +51,7 @@ const Clients = () => {
 
             </section>
 
-            {/* create a slider for experiences and services in a helper */}
+           
             <section className="client-grid-container">
 
                 <article className="client-grid-item">

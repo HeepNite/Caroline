@@ -15,7 +15,7 @@ import Home from './Components/Pages/Home';
 import WhatCanIDo from './Components/Pages/WhatCanIDo';
 import Project from './Components/Pages/Project';
 import Testimonials from './Components/Pages/Testimonials';
-import Blog from './Components/Pages/Blog';
+import Gallery from './Components/Pages/Gallery';
 import Contact from './Components/Pages/Contact';
 import Clients from './Components/Pages/Clients';
 
@@ -25,15 +25,17 @@ const App = () => {
     /* Variables */
     const options = {
         root: null,
-        rootMargin: "500px 500px",
-        threshold: 1.0
+        rootMargin: "1000px 1000px",
+        threshold: .2
     }
     /* Hooks */
-    const [ , setElements, entries] = useObserver(options);
+    const [, setElements, entries] = useObserver(options);
 
     /* Referencies */
     const ref = useRef(null);
 
+    /* gsap */
+   
     /* Interction observer API */
     useEffect(() => {
 
@@ -57,11 +59,11 @@ const App = () => {
                 <section className=" panel clients index-section-clare">
                     <Clients />
                 </section>
-                <section className=" panel testimonialsn idex-section-dark">
+                <section className=" panel testimonials index-section-dark">
                     <Testimonials />
                 </section>
-                <section className=" panel blog  index-section-clare">
-                    <Blog />
+                <section className=" panel gallery  index-section-clare">
+                    <Gallery />
                 </section>
                 <section className=" panel contact index-section-dark">
                     <Contact />

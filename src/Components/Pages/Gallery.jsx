@@ -1,5 +1,14 @@
-import { useEffect, useReducer } from "react";
+/* react hooks */
+import { useEffect, useContext, useRef, useReducer } from 'react';
 
+/* context */
+import { UseObsCont } from '../Context/UseObsCont';
+
+/* gsap animations */
+import gsap from 'gsap';
+
+/* helpers */
+import { fadeIn, fadeOut } from '../Helpers/Animatiosn';
 
 
 import BlogReducer from "../Reducer/BlogReducer";
@@ -41,19 +50,34 @@ const initialState = [{
 
 }];
 
-const Blog = () => {
+const Gallery = () => {
 
-
-
+    const el = useRef(null);
+    const child = gsap.utils.selector(el);
+    const entries = useContext(UseObsCont);
 
     useEffect(() => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('gallery')) {
+                    fadeIn(gsap, child);
 
-    }, []);
+
+                }
+                else {
+                    fadeOut(gsap, child);
+
+                }
+            }
+        });
+
+    }, [entries]);
+
 
     const [posts, dispatch] = useReducer(BlogReducer, initialState)
 
     return (
-        <main className="blog-container">
+        <main ref={el} className="blog-container">
             <section className="blog-grid-container">
 
                 <article className="blog-titles">
@@ -84,4 +108,4 @@ const Blog = () => {
     );
 }
 
-export default Blog;
+export default Gallery;

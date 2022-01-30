@@ -1,20 +1,44 @@
-import { useEffect } from 'react';
+/* react hooks */
+import { useEffect, useContext, useRef } from 'react';
+
+/* context */
+import { UseObsCont } from '../Context/UseObsCont';
+
+/* gsap animations */
+import gsap from 'gsap';
+
+/* helpers */
+import { fadeIn, fadeOut } from '../Helpers/Animatiosn';
 
 
 
 import { FaChrome, FaEnvelopeOpenText } from 'react-icons/fa';
 
 const Contact = () => {
-
-
+    const el = useRef(null);
+    const child = gsap.utils.selector(el);
+    const entries = useContext(UseObsCont);
 
     useEffect(() => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('contact')) {
+                    fadeIn(gsap, child);
 
 
-    }, []);
+                }
+                else {
+                    fadeOut(gsap, child);
+
+                }
+            }
+        });
+
+    }, [entries]);
+
     return (
 
-        <main className="contact-container">
+        <main ref={el} className="contact-container">
             <section className="contact-grid-container">
 
                 <article className="contact-text">

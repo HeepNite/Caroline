@@ -1,27 +1,36 @@
-import { useEffect,useContext } from 'react';
+/* react hooks */
+import { useEffect, useContext, useRef } from 'react';
+
+/* context */
 import { UseObsCont } from '../Context/UseObsCont';
 
+/* gsap animations */
+import gsap from 'gsap';
+
+/* helpers */
+import { fadeIn, fadeOut } from '../Helpers/Animatiosn';
 
 
 import ProjectImg from '../../Assets/Img/profile-2.jpeg';
 
 const Project = () => {
+    const el = useRef(null);
+    const child = gsap.utils.selector(el);
     const entries = useContext(UseObsCont);
-    useEffect(() => {
-        const leftEl = document.querySelector('.home-presentation-left-container');
-        const rightEl = document.querySelector('.home-image-right-container');
 
+    useEffect(() => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                if (entry.target.classList.contains('whatCanDo')) {
-                    console.log(entry.target)
-                    
+                if (entry.target.classList.contains('project')) {
+                    fadeIn(gsap, child);
+
+
                 }
                 else {
-                   
+                    fadeOut(gsap, child);
+
                 }
             }
-
         });
 
     }, [entries]);
@@ -29,7 +38,7 @@ const Project = () => {
 
 
     return (
-        <main  className="project-flex-container">
+        <main ref={el} className="project-flex-container" >
             <section className='project-content-container'>
                 <div className="project-grid-container">
                     <article className="project-presentation">
@@ -53,7 +62,7 @@ const Project = () => {
 
 
 
-        </main>
+        </main >
     );
 }
 
