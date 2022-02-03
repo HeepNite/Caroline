@@ -10,14 +10,20 @@ import gsap from 'gsap';
 /* helpers */
 import { fadeIn, fadeOut } from '../Helpers/Animatiosn';
 
-
+/* images  */
 import ProjectImg from '../../Assets/Img/profile-2.jpeg';
 
 const Project = () => {
+    /* ref */
     const el = useRef(null);
+
+    /* gsap */
     const child = gsap.utils.selector(el);
+
+    /* context */
     const entries = useContext(UseObsCont);
 
+    /* animation etire section */
     useEffect(() => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -35,7 +41,10 @@ const Project = () => {
 
     }, [entries]);
 
-
+    /* functios */
+    const nextSlide = () => { }
+    const prevSlide = () => { }
+    const autoSlide = () => { }
 
     return (
         <main ref={el} className="project-flex-container" >

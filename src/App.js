@@ -28,14 +28,17 @@ const App = () => {
         rootMargin: "1000px 1000px",
         threshold: .2
     }
+ 
+
+
     /* Hooks */
     const [, setElements, entries] = useObserver(options);
+
+
 
     /* Referencies */
     const ref = useRef(null);
 
-    /* gsap */
-   
     /* Interction observer API */
     useEffect(() => {
 
