@@ -1,5 +1,5 @@
 /* react hooks */
-import { useEffect, useContext, useRef, useReducer } from 'react';
+import { useEffect, useContext, useRef, useReducer, useState } from 'react';
 
 /* context */
 import { UseObsCont } from '../Context/UseObsCont';
@@ -10,51 +10,57 @@ import gsap from 'gsap';
 /* helpers */
 import { fadeIn, fadeOut } from '../Helpers/Animatiosn';
 
+/* reducer */
+import GalleryReducer from '../Reducer/GalleryReducer';
+/* images */
+import img1 from '../../Assets/Img/blog-1.jpeg';
+import img2 from '../../Assets/Img/blog-2.jpeg';
+import img4 from '../../Assets/Img/blog-4.jpeg';
 
-import BlogReducer from "../Reducer/BlogReducer";
-
-import blogImg1 from '../../Assets/Img/blog-1.jpeg';
-
-import blogImg2 from '../../Assets/Img/blog-2.jpeg';
-
-import blogImg4 from '../../Assets/Img/blog-4.jpeg';
+/* icons */
+import { FaAngleDoubleRight, FaAngleDoubleLeft } from 'react-icons/fa';
 
 const initialState = [{
     id: 1,
-    image: blogImg1,
-    month: new Date().getMonth(),
-    year: new Date().getFullYear(),
-    category: 'News',
-    title: 'Lorem ipsum dolor',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos!',
-
+    image: img1
 },
 {
     id: 2,
-    image: blogImg2,
-    month: new Date().getMonth(),
-    year: new Date().getFullYear(),
-    category: 'News',
-    title: 'Lorem ipsum dolor',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos!',
-
+    image: img2
 },
 {
     id: 3,
-    image: blogImg4,
-    month: new Date().getMonth(),
-    year: new Date().getFullYear(),
-    category: 'News',
-    title: 'Lorem ipsum dolor',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos!',
-
+    image: img4
+},
+{
+    id: 4,
+    image: img1
+},
+{
+    id: 5,
+    image: img2
+},
+{
+    id: 6,
+    image: img4
 }];
 
 const Gallery = () => {
 
+    /* ref */
     const el = useRef(null);
+
+    /* gsap */
     const child = gsap.utils.selector(el);
+
+    /* context */
     const entries = useContext(UseObsCont);
+
+    /* reducer */
+    const [images, dispatch] = useReducer(GalleryReducer, initialState);
+
+    /* state */
+    const [active, setActive] = useState(0);
 
     useEffect(() => {
         entries.forEach(entry => {
@@ -73,37 +79,36 @@ const Gallery = () => {
 
     }, [entries]);
 
-
-    const [posts, dispatch] = useReducer(BlogReducer, initialState)
-
     return (
-        <main ref={el} className="blog-container">
-            <section className="blog-grid-container">
+        <main ref={el} className="gallery-grid-container">
+            <article className="gallery-titles">
+                <h2>gallery</h2>
+                <h1> More than a picture</h1>
+                <div className="gallery-divider-container"></div>
+            </article>
 
-                <article className="blog-titles">
-                    <h2>News</h2>
-                    <h1> Get News Feed</h1>
-                    <div className="blog-divider-container"></div>
-                </article>
+            <article className='gallery-images-slider-container'>
+                <ul className='gallery-image-slider-container-1'>
+                    {images.map((image, index) => (
+                        <li key={index} className={active === index ? 'active' : ''}>
+                            <article className="gallery-feed-article" key={image.id}>
+                                <div className="gallery-grid-item-img"><img src={image.image} alt="gallery" /></div>
 
-                <article className="blog-drop-menu">
-                    <h3>See All</h3>
-                </article>
+                            </article>
+                        </li>
+                    ))}
+                </ul>
+                <ul className='gallery-image-slider-container-2'>
+                    {images.map((image, index) => (
+                        <li key={index} className={active === index ? 'active' : ''}>
+                            <article className="gallery-feed-article" key={image.id}>
+                                <div className="gallery-grid-item-img"><img src={image.image} alt="gallery" /></div>
 
-                {
-                    posts.map(post => (
-                        <article className="blog-feed-article" key={post.id}>
-                            <div className="blog-grid-item-img"><img src={post.image} alt="blog" /></div>
-                            <div className='blog-post-content'>
-                                <h4>{post.month} / {post.year} / {post.category}</h4>
-                                <h3>{post.title}</h3>
-                                <p>{post.desc}</p>
-                            </div>
-                        </article>
-                    ))
-                }
-            </section>
-
+                            </article>
+                        </li>
+                    ))}
+                </ul>
+            </article>
         </main>
     );
 }

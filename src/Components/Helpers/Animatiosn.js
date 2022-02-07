@@ -8,7 +8,7 @@ export const fadeIn = (gsap, child) => {
     });
 
 
-    gsap.to(child(".home-grid-left-container, .img-container, .project-grid-container, .project-slider-left-img, .testimonials-slider-content, .testimonials-slider-img, .testimonials-arrows-container"), {
+    gsap.to(child(".home-grid-left-container, .img-container, .project-video-inner-container, .project-content-inner-container, .testimonials-slider-content, .testimonials-slider-img, .testimonials-arrows-container"), {
         duration: 1,
         opacity: 1,
         x: 0,
@@ -34,13 +34,13 @@ export const fadeOut = (gsap, child) => {
         ease: "power3.inOut",
     });
 
-    gsap.to(child(".home-grid-left-container, .project-grid-container, .testimonials-slider-content, .testimonials-arrows-container"), {
+    gsap.to(child(".home-grid-left-container, .project-content-inner-container, .testimonials-slider-content, .testimonials-arrows-container"), {
         duration: 0.5,
         opacity: 0,
         x: -300,
         ease: "power3.inOut",
     });
-    gsap.to(child(" .img-container, .project-slider-left-img, .testimonials-slider-img"), {
+    gsap.to(child(" .img-container, .project-slider-left-img, .testimonials-slider-img, .project-video-inner-container"), {
         duration: 0.5,
         opacity: 0,
         x: 300,

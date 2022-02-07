@@ -53,14 +53,12 @@ const Testimonials = () => {
 
     /* ref */
     const el = useRef(null);
-    const imageSlide = useRef(null);
-    const contentSlide = useRef(null);
-
-    /* state */
-    const [active, setActive] = useState(0)
 
     /* gsap */
     const child = gsap.utils.selector(el);
+
+    /* state */
+    const [active, setActive] = useState(0)
 
     /* context */
     const entries = useContext(UseObsCont);
@@ -85,18 +83,6 @@ const Testimonials = () => {
         });
 
     }, [entries]);
-
-
-    /* functions */
-    const nextSlide = () => {
-        setActive(active === testimonials.length - 1 ? 0 : active + 1);
-    }
-    const prevSlide = () => {
-        setActive(active === 0 ? testimonials.length - 1 : active - 1);
-    }
-    const autoSlide = () => {
-        slideIntervale = setInterval(nextSlide, intervalTime);
-    }
 
     /* animation slider */
     useEffect(() => {
@@ -127,10 +113,22 @@ const Testimonials = () => {
         }
     }, [active]);
 
+    /* functions */
+    const nextSlide = () => {
+        setActive(active === testimonials.length - 1 ? 0 : active + 1);
+    }
+    const prevSlide = () => {
+        setActive(active === 0 ? testimonials.length - 1 : active - 1);
+    }
+    const autoSlide = () => {
+        slideIntervale = setInterval(nextSlide, intervalTime);
+    }
+
+
     return (
         <main ref={el} className="testimonials-container">
-            <div className='testimonials-content-slider-container'>
-                <ul ref={contentSlide} className="testimonials-content-inner">
+            <section className='testimonials-content-slider-container'>
+                <ul className="testimonials-content-inner">
                     {testimonials.map((testimonial, index) => (
                         <li className={active === index ? "active" : ''} key={testimonial.id}>
                             <div className="testimonials-content-container">
@@ -145,18 +143,19 @@ const Testimonials = () => {
                     ))}
                 </ul>
 
-                <section className='testimonials-arrows-container'>
+                <article className='testimonials-arrows-container'>
                     <button onClick={prevSlide} className='testimonials-arrows-left'>
                         <FaAngleDoubleLeft className='testimonials-arrows-left-icon' />
                     </button>
                     <button onClick={nextSlide} className='testimonials-arrows-right'>
                         <FaAngleDoubleRight className='testimonials-arrows-right-icon' />
                     </button>
-                </section>
-            </div>
+                </article>
+            </section>
 
-            <div className='testimonials-image'>
-                <ul ref={imageSlide} className='testimonials-image-slider-container'>
+            <section className='testimonials-image'>
+
+                <ul className='testimonials-image-slider-container'>
                     {testimonials.map((testimonial, index) => (
                         <li className={active === index ? 'active' : ''}>
                             <img className='testimonials-slider-img' src={testimonial.image} alt="testimonial" />
@@ -164,7 +163,7 @@ const Testimonials = () => {
                     ))}
                 </ul>
 
-            </div>
+            </section>
 
         </main>
     );

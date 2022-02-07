@@ -1,17 +1,13 @@
 .project-flex-container {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
+    position: relative;
+    display: grid;
+    grid-template-columns: 3fr 3fr;
+    height: 100%;
+    width: 100%;
 }
-.project-content-container{
-    max-width: 60rem;
-    width:100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.project-content-container {
+    height: 100%;
+    width: 100%;
     position: relative;
     &:after {
         content: "";
@@ -23,57 +19,110 @@
         background-image: url("../../Assets/Img/bg-alt-01.svg");
         background-size: cover;
     }
-    .project-grid-container {
-       
-        margin-right: 5rem;
-        width: 57%;
-       z-index: 1;
-        .project-presentation {
-            h2 {
-                color: $BaseColor-7-hex;
-                text-transform: uppercase;
-                font-size: 0.8rem;
-                letter-spacing: 3px;
-                margin-bottom: 12px;
+    .project-content-inner-container {
+        list-style: none;
+        overflow: hidden;
+        width: calc((100vw - 47rem) * 3 / 3);
+        height: 40%;
+        position: relative;
+        top: 18rem;
+        margin-left: 1.6rem;
+        z-index: 1;
+        li {
+            list-style: none;
+            overflow: hidden;
+            width: calc((100vw - 65rem) * 3 / 3);
+            height: 100%;
+            position: absolute;
+            z-index: 5;
+            opacity: 1;
+            margin-left: 2.9rem;
+            .project-presentation {
+                h2 {
+                    color: $BaseColor-7-hex;
+                    text-transform: uppercase;
+                    font-size: 0.8rem;
+                    letter-spacing: 3px;
+                    margin-bottom: 12px;
+                }
+                h1 {
+                    color: $BaseColor-7-hex;
+                    font-size: 3.6vw;
+                    font-weight: 900;
+                    letter-spacing: -3px;
+                    line-height: 1;
+                }
             }
-            h1 {
-                color: $BaseColor-7-hex;
-                font-size: 3.6vw;
-                font-weight: 900;
-                letter-spacing: -3px;
-                line-height: 1;
-            }
-        }
-        .project-presentation-divider {
-            background: $BaseColor-7-hex;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-            width: 7rem;
-            height: 0.2rem;
-        }
-        .project-excerpt {
-            p{
-                color: $BaseColor-7-hex;
-                font-size: 1rem;
-                font-weight: 300;
-                line-height: 1.3;
+            .project-presentation-divider {
+                background: $BaseColor-7-hex;
+                margin-top: 1rem;
                 margin-bottom: 1rem;
+                width: 7rem;
+                height: 0.2rem;
             }
-            
+            .project-excerpt {
+                p {
+                    color: $BaseColor-7-hex;
+                    font-size: 1rem;
+                    font-weight: 300;
+                    line-height: 1.3;
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+    .projects-arrows-container {
+        z-index: 5;
+        display: flex;
+        justify-content: space-evenly;
+        width: 50%;
+        align-items: center;
+        position: absolute;
+        top: 33.7rem;
+
+        button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            .projects-arrows-left-icon,
+            .projects-arrows-right-icon {
+                color: $BaseColor-6-button-hex;
+                font-size: 1.5rem;
+                transition: all 0.2s ease-in-out;
+                &:hover {
+                    color: $BaseColor-6-text-hex;
+                }
+            }
         }
     }
 }
 
 .project-slider-container {
-    max-width: 60rem;
     width: 100%;
-    height: 100vh;
-    z-index: 1;
+    height: 100%;
+    position: relative;
     overflow: hidden;
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .project-video-inner-container {
+        list-style: none;
         overflow: hidden;
+        height: 100vh;
+       
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        li {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            .project-slider-left-video{
+                width: 100% !important;
+                height: 100vh !important;
+               video {
+                    width: 100% !important;
+                    height: 100vh !important;
+                    object-fit: cover;
+                }
+            }
+        }
     }
 }
