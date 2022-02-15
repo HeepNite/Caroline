@@ -12,13 +12,11 @@ import { fadeIn, fadeOut } from '../Helpers/Animatiosn';
 
 /* reducer */
 import GalleryReducer from '../Reducer/GalleryReducer';
+
 /* images */
 import img1 from '../../Assets/Img/blog-1.jpeg';
 import img2 from '../../Assets/Img/blog-2.jpeg';
 import img4 from '../../Assets/Img/blog-4.jpeg';
-
-/* icons */
-import { FaAngleDoubleRight, FaAngleDoubleLeft } from 'react-icons/fa';
 
 const initialState = [{
     id: 1,
@@ -67,12 +65,9 @@ const Gallery = () => {
             if (entry.isIntersecting) {
                 if (entry.target.classList.contains('gallery')) {
                     fadeIn(gsap, child);
-
-
                 }
                 else {
                     fadeOut(gsap, child);
-
                 }
             }
         });

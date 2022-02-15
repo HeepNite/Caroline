@@ -157,7 +157,7 @@ const Testimonials = () => {
 
                 <ul className='testimonials-image-slider-container'>
                     {testimonials.map((testimonial, index) => (
-                        <li className={active === index ? 'active' : ''}>
+                        <li className={active === index ? 'active' : ''} key={testimonial.id}>
                             <img className='testimonials-slider-img' src={testimonial.image} alt="testimonial" />
                         </li>
                     ))}

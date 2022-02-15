@@ -94,6 +94,7 @@ const Project = () => {
                 gsap.to(contentSl, {
                     duration: 1,
                     opacity: 1,
+                    display: "block",
                     x: 0,
                     ease: 'power3.out'
                 })
@@ -102,6 +103,7 @@ const Project = () => {
                 gsap.to(contentSl, {
                     duration: 0.5,
                     opacity: 0,
+                    display: 'none',
                     x: 100,
                     ease: 'power3.out'
                 })
@@ -159,6 +161,7 @@ const Project = () => {
                                 url={project.video}
                                 controls
                                 playing
+                                muted
                             />
 
                         </li>

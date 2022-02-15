@@ -1,5 +1,5 @@
 /* Core */
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /* Hooks */
 import useObserver from "./Components/Hooks/useObserver";
@@ -7,10 +7,13 @@ import useObserver from "./Components/Hooks/useObserver";
 /* Context */
 import { UseObsCont } from './Components/Context/UseObsCont';
 
+/* gsap */
+import { gsap } from 'gsap';
 /* Routers 
 mport AppRouter from "./Routes/AppRouter";*/
 
 /* Page Components */
+import Loading from './Components/Generals/Loading/Loading';
 import Home from './Components/Pages/Home';
 import WhatCanIDo from './Components/Pages/WhatCanIDo';
 import Project from './Components/Pages/Project';
@@ -20,7 +23,13 @@ import Contact from './Components/Pages/Contact';
 import Clients from './Components/Pages/Clients';
 
 
+
 const App = () => {
+    /* Referencies */
+    const ref = useRef(null);
+    const load = useRef(null);
+    /* states */
+    const [isLoading, setIsLoading] = useState(true);
 
     /* Variables */
     const options = {
@@ -28,28 +37,29 @@ const App = () => {
         rootMargin: "1000px 1000px",
         threshold: .2
     }
- 
-
-
     /* Hooks */
     const [, setElements, entries] = useObserver(options);
 
-
-
-    /* Referencies */
-    const ref = useRef(null);
-
     /* Interction observer API */
     useEffect(() => {
-
         let panels = ref.current.children;
         setElements(panels);
+    }, [setElements, isLoading]);
 
-    }, [setElements]);
+    /* loading  animation */
+    useEffect(() => {
+
+       
+
+    }, [isLoading]);
 
     return (
         <UseObsCont.Provider value={entries}>
+            <div ref={load} className=" app-loading">
+                <Loading className="loading" />
+            </div>
             <main ref={ref} className="container">
+
                 <section className=" panel home index-section-dark">
                     <Home />
                 </section>

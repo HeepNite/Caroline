@@ -12,122 +12,147 @@
         background-image: url("../../Assets/Img/bg-alt-01.svg");
         background-size: cover;
     }
-}
-.contact-grid-container {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 24rem 11rem;
-    justify-items: center;
-    align-content: center;
-    height: 100%;
-    align-items: center;
-    overflow: hidden;
-    .contact-text {
-        align-self: center;
-        max-width: 69%;
-        h3 {
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            margin-bottom: 12px;
-            color: $BaseColor-2-text-hex;
-        }
-        h2 {
-            font-size: 3vw;
-            font-weight: 900;
-            letter-spacing: -1px;
-            line-height: 1;
-            color: $BaseColor-2-text-hex;
-        }
-        p {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            font-weight: 400;
-            letter-spacing: 1px;
-            line-height: 1.2;
-            color: $BaseColor-2-text-hex;
-        }
-    }
-    .contact-form {
-        width: 65%;
-        form {
-            width: 100%;
 
-            .contact-grid-form-inputs {
+    .contact-grid-container {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 24rem 11rem;
+        justify-items: center;
+        align-content: center;
+        height: 100%;
+        align-items: center;
+        overflow: hidden;
+        .contact-text {
+            align-self: center;
+            max-width: 69%;
+            h3 {
+                text-transform: uppercase;
+                font-size: 0.7rem;
+                letter-spacing: 3px;
+                margin-bottom: 12px;
+                color: $BaseColor-2-text-hex;
+            }
+            h2 {
+                font-size: 3vw;
+                font-weight: 900;
+                letter-spacing: -1px;
+                line-height: 1;
+                color: $BaseColor-2-text-hex;
+            }
+            p {
+                margin-top: 1rem;
+                font-size: 0.9rem;
+                font-weight: 400;
+                letter-spacing: 1px;
+                line-height: 1.2;
+                color: $BaseColor-2-text-hex;
+            }
+        }
+        .contact-form {
+            width: 65%;
+            form {
                 width: 100%;
-                label {
-                    font-size: 0.7rem;
-                    font-weight: 400;
-                    letter-spacing: 1px;
-                    line-height: 1.2;
-                    color: $BaseColor-2-text-hex;
+                .error {
+                    color: $BaseColor-1-text-hex;
+                    font-size: 1rem;
+                    margin: 1rem auto;
+                    padding: 0.6rem;
+                    background-color: $BaseColor-2-button-hex;
+                    width: 96%;
+                    border-radius: 0.4rem;
+                    text-align: center;
+                    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
                 }
-                input {
-                    margin: 0.7rem 0rem;
+                .success {
+                    color: $BaseColor-1-text-hex;
+                    font-size: 1rem;
+                    margin: 1rem auto;
+                    padding: 0.6rem;
+                    background-color: rgb(82, 111, 82);
+                    width: 96%;
+                    border-radius: 0.4rem;
+                    text-align: center;
+                    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
+                }
+                .contact-grid-form-inputs {
                     width: 100%;
-                    height: 1rem;
-                    border-radius: 0.4rem;
-                    border: 1px solid $BaseColor-2-text-hex;
-                    padding: 0.5rem;
-                    font-size: 0.8rem;
-                    font-weight: 400;
-                    letter-spacing: 1px;
-                    line-height: 1.2;
-                    color: $BaseColor-2-text-hex;
-                    background-color: transparent;
-                }
-                textarea {
-                    margin: 0.7rem 0rem;
-                    width: 100%;
-                    height: 5rem;
-                    border-radius: 0.4rem;
-                    border: 1px solid $BaseColor-2-text-hex;
-                    padding: 0.5rem;
-                    font-size: 0.8rem;
-                    font-weight: 400;
-                    letter-spacing: 1px;
-                    line-height: 1.2;
-                    color: $BaseColor-2-text-hex;
-                    background-color: transparent;
-                }
-                button {
-                    width: 105%;
-                    height: 2.5rem;
-                    border-radius: 0.4rem;
-                    border: 1px solid $BaseColor-2-text-hex;
-                    padding: 0.5rem;
-                    font-size: 0.8rem;
-                    font-weight: 400;
-                    letter-spacing: 1px;
-                    line-height: 1.2;
-                    color: $BaseColor-2-text-hex;
-                    background-color: transparent;
-                }
-            }
-        }
-    }
-    .contact-contact-here {
-        width: 69%;
-        .contact-flex-contact-container {
-            display: flex;
-            .contact-flex-icon{
-                margin-right: 1rem;
-                margin-bottom: 1rem;
-                padding: 0.6rem 0.6rem 0.4rem 0.6rem;
-                border-radius: 100%;
-                color: $BaseColor-3-button-hex;
-                background-color:$BaseColor-2-text-hex;
+                    label {
+                        font-size: 0.7rem;
+                        font-weight: 400;
+                        letter-spacing: 1px;
+                        line-height: 1.2;
+                        color: $BaseColor-2-text-hex;
+                    }
+                    input {
+                        margin: 0.7rem 0rem;
+                        width: 96%;
+                        height: 1rem;
+                        border-radius: 0.4rem;
+                        border: 1px solid $BaseColor-2-text-hex;
+                        padding: 0.5rem;
+                        font-size: 0.8rem;
+                        font-weight: 400;
+                        letter-spacing: 1px;
+                        line-height: 1.2;
+                        color: $BaseColor-2-text-hex;
+                        background-color: transparent;
+                        outline: none;
 
+                    }
+                    textarea {
+                        margin: 0.7rem 0rem;
+                        width: 96%;
+                        height: 5rem;
+                        border-radius: 0.4rem;
+                        border: 1px solid $BaseColor-2-text-hex;
+                        padding: 0.5rem;
+                        font-size: 0.8rem;
+                        font-weight: 400;
+                        letter-spacing: 1px;
+                        line-height: 1.2;
+                        color: $BaseColor-2-text-hex;
+                        background-color: transparent;
+                        outline: none;
+                    }
+                    button {
+                        width: 100%;
+                        height: 2.5rem;
+                        border-radius: 0.4rem;
+                        border: 1px solid $BaseColor-2-text-hex;
+                        padding: 0.5rem;
+                        font-size: 0.8rem;
+                        font-weight: 400;
+                        letter-spacing: 1px;
+                        line-height: 1.2;
+                        color: $BaseColor-2-text-hex;
+                        background-color: transparent;
+                        outline: none;
+                        cursor: pointer;
+                    }
+                }
             }
-            .contact-flex-info{
-                color: $BaseColor-3-text-hex;
-            }
-            
         }
-    }
-    .contact-grid-info{
-        color: $BaseColor-3-text-hex;
+        .contact-contact-here {
+            width: 69%;
+            .contact-flex-contact-container {
+                display: flex;
+                .contact-flex-icon {
+                    margin-right: 1rem;
+                    margin-bottom: 1rem;
+                    padding: 0.6rem 0.6rem 0.4rem 0.6rem;
+                    border-radius: 100%;
+                    color: $BaseColor-3-button-hex;
+                    background-color: $BaseColor-2-text-hex;
+                }
+                .contact-flex-info {
+                    color: $BaseColor-3-text-hex;
+                }
+            }
+        }
+        .contact-grid-info {
+            color: $BaseColor-3-text-hex;
+        }
     }
 }

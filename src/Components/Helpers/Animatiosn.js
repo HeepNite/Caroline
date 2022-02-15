@@ -1,6 +1,6 @@
 
 export const fadeIn = (gsap, child) => {
-    gsap.to(child(".i-do-left-presentation-container, .i-do-grid-right-container, .client-presentation-container, .client-grid-container, .blog-titles, .blog-drop-menu, .contact-text, .contact-form, .blog-grid-item-img, .blog-post-content, .contact-contact-here, .contact-grid-info "), {
+    gsap.to(child(".i-do-left-presentation-container, .i-do-grid-right-container, .client-presentation-container, .client-grid-container, .contact-text, .contact-form, .contact-contact-here, .contact-grid-info, .gallery-images-slider-container, .gallery-titles "), {
         duration: 1,
         opacity: 1,
         y: 0,
@@ -20,14 +20,14 @@ export const fadeIn = (gsap, child) => {
 export const fadeOut = (gsap, child) => {
 
 
-    gsap.to(child(".i-do-left-presentation-container, .client-presentation-container, .blog-titles, .blog-drop-menu, .contact-text, .contact-form"), {
+    gsap.to(child(".i-do-left-presentation-container, .client-presentation-container, .contact-text, .contact-form, .gallery-titles"), {
         duration: 0.5,
         opacity: 0,
         y: -300,
         ease: "power3.inOut",
     });
 
-    gsap.to(child(".i-do-grid-right-container, .client-grid-container, .blog-grid-item-img, .blog-post-content, .contact-contact-here, .contact-grid-info"), {
+    gsap.to(child(".i-do-grid-right-container, .client-grid-container, .contact-contact-here, .contact-grid-info, .gallery-images-slider-container"), {
         duration: 0.5,
         opacity: 0,
         y: 300,

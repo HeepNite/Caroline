@@ -31,7 +31,7 @@
             li {
                 list-style: none;
                 overflow: hidden;
-                width: calc((100vw - 55rem) * 3 / 3);
+                width: 80%;
                 height: 100%;
                 position: absolute;
                 z-index: 5;
@@ -89,7 +89,7 @@
             align-items: center;
             position: absolute;
             top: 33.7rem;
-           
+
             button {
                 background-color: transparent;
                 border: none;
@@ -116,17 +116,16 @@
             list-style: none;
             overflow: hidden;
             height: 100vh;
-            width: calc((100vw - 45.4rem) * 3 / 3);
             width: 100%;
             padding: 0;
             margin: 0;
             li {
                 position: absolute;
-                width: calc((100vw - 45.4rem) * 3 / 3);
+                width: 100%;
                 height: 100vh;
 
                 .testimonials-slider-img {
-                    width: calc((100vw - 45.4rem) * 3 / 3);
+                    width: 100%;
                     height: 100vh;
                     object-fit: cover;
                 }

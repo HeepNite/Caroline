@@ -25,13 +25,13 @@
         width: calc((100vw - 47rem) * 3 / 3);
         height: 40%;
         position: relative;
-        top: 18rem;
+        top: 15rem;
         margin-left: 1.6rem;
         z-index: 1;
         li {
             list-style: none;
             overflow: hidden;
-            width: calc((100vw - 65rem) * 3 / 3);
+            width: 80%;
             height: 100%;
             position: absolute;
             z-index: 5;
@@ -75,10 +75,10 @@
         z-index: 5;
         display: flex;
         justify-content: space-evenly;
-        width: 50%;
+        width: 54%;
         align-items: center;
         position: absolute;
-        top: 33.7rem;
+        top: 28.7rem;
 
         button {
             background-color: transparent;

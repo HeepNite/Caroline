@@ -6,7 +6,7 @@ const useObserver = (options) => {
     const [entries, setEntries] = useState([]);
 
     const observer = useRef(new IntersectionObserver(entries => {
-        console.log(entries);
+        console.log(`entries`,entries);
         setEntries(entries);
     }, options));
 
