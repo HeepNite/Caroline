@@ -29,19 +29,32 @@ const Loading = ({ setIsLoading }) => {
             y: 100,
             ease: 'power3.in'
         }, '+=0.6')
-     
+
     }, []);
 
     /* functions */
     const handleLoad = (e) => {
         e.preventDefault();
-        gsap.timeline().to(ref.current, {
-            duration: 1,
+        gsap.timeline().to(child('.loading-content'), {
+            duration: 0.7,
             opacity: 0,
-            display: "none",
-            x: -1000,
-            ease: "power3.in",
+            y: -150,
+            stagger: 0.4,
+            ease: 'power3.inOut'
         })
+        gsap.timeline().to(child('button'), {
+            duration: 0.7,
+            opacity: 0,
+            y: 100,
+            ease: 'power3.inOut'
+        })
+        gsap.timeline().to(ref.current, {
+            duration: 1.6,
+            opacity: 1,
+            display: "none",
+            x: -1600,
+            ease: "power3.inOut"
+        }, '+=1.2')
     }
     return (
         <main ref={ref} className="loading-container">
